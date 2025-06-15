@@ -1,0 +1,33 @@
+version: 1
+applications:
+  - frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm ci
+            - npm run dev
+        build:
+          commands:
+            - npm run build
+      artifacts:
+        baseDirectory: public
+        files:
+          - '**/*'
+    appRoot: movie-streaming-app
+    backend:
+      phases:
+        preBuild:
+          commands:
+            - composer install --no-dev
+            - cp .env.production .env
+        build:
+          commands:
+            - php artisan storage:link
+            - php artisan config:cache
+            - php artisan route:cache
+            - php artisan view:cache
+      artifacts:
+        baseDirectory: /
+        files:
+          - '**/*'
+          - .env
