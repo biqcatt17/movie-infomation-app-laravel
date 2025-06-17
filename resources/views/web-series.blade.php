@@ -37,17 +37,17 @@
         <div class="row g-4">
             @foreach($series as $show)
                 <div class="col-md-3 mb-4">
-                    <a href="{{ route('web-series.show', $show['id']) }}" class="text-decoration-none">
+                    <a href="{{ route('web-series.show', $show->id) }}" class="text-decoration-none">
                         <div class="card bg-dark text-white border-0 h-100 hover-effect">
-                            <img src="{{ asset($show['poster']) }}" class="card-img-top" alt="{{ $show['title'] }}">
+                            <img src="{{ asset($show->poster) }}" class="card-img-top" alt="{{ $show->title }}">
                             <div class="card-body">
-                                <h5 class="card-title text-white">{{ $show['title'] }}</h5>
-                                <span class="badge bg-danger mb-2">{{ $show['platform'] }}</span>
+                                <h5 class="card-title text-white">{{ $show->title }}</h5>
+                                <span class="badge bg-danger mb-2">{{ $show->platform }}</span>
                                 <p class="card-text">
-                                    <small class="text-muted">{{ $show['year'] }} • {{ $show['seasons'] }} Seasons</small>
+                                    <small class="text-muted">{{ $show->year }} • {{ $show->seasons }} Seasons</small>
                                     <span class="float-end">
                                         <i class="fas fa-star text-warning"></i>
-                                        {{ $show['rating'] }}
+                                        {{ $show->rating }}
                                     </span>
                                 </p>
                             </div>
@@ -55,6 +55,11 @@
                     </a>
                 </div>
             @endforeach
+        </div>
+
+        <!-- Pagination Links -->
+        <div class="d-flex justify-content-center mt-4">
+            {{ $series->links() }}
         </div>
     </div>
 

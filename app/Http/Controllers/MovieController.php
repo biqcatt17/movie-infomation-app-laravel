@@ -13,31 +13,43 @@ class MovieController extends Controller
         [
             'id' => 1,
             'title' => 'Doctor Strange in the Multiverse of Madness',
-            'poster' => 'asset/images/movie1.jpeg',
+            'poster' => 'asset/images/1.jpeg',
             'year' => '2022',
             'duration' => '2h 6m',
             'rating' => '8.5',
             'imdb_rating' => '7.5',
             'views' => 1200, // Add views property
             'description' => 'Dr. Stephen Strange casts a forbidden spell...',
+            'genre' => 'Action, Adventure, Fantasy',
+            'director' => 'Sam Raimi',
+            'cast' => 'Benedict Cumberbatch, Elizabeth Olsen, Chiwetel Ejiofor',
+            'language' => 'English',
             'category' => 'Action',
+            'storyline' => 'In this sequel to "Doctor Strange," the titular character must navigate the multiverse to protect reality from a powerful new threat. Alongside Wanda Maximoff, he faces dark forces that challenge his understanding of magic and the consequences of his actions.',
+            'trailer_embed_url' => 'https://www.youtube.com/embed/4r7wHMg5Yjg'
         ],
         [
             'id' => 2,
             'title' => 'Memory',
-            'poster' => 'asset/images/movie-2.png',
+            'poster' => 'asset/images/2.png',
             'year' => '2022',
             'duration' => '1h 54m',
             'rating' => '7.2',
             'imdb_rating' => '6.1',
             'views' => 800, // Add views property
             'description' => 'An expert assassin with a memory disorder...',
-            'category' => 'Drama',
+            'genre' => 'Action, Thriller',
+            'director' => 'Martin Campbell',
+            'cast' => 'Liam Neeson, Guy Pearce, Monica Bellucci',
+            'language' => 'English',
+            'category' => 'Action',
+            'storyline' => 'Alex Lewis, an expert assassin, is on the verge of retirement when he discovers that his latest target',
+            'trailer_embed_url' => 'https://www.youtube.com/embed/yGw8yw6Mso8?si=6ZpDp4zOqq8XbC_a'
         ],
         [
             'id' => 3,
             'title' => 'The Unbearable Weight of Massive Talent',
-            'poster' => 'asset/images/movie-3.png',
+            'poster' => 'asset/images/3.png',
             'year' => '2022',
             'duration' => '1h 47m',
             'rating' => '9.1',
@@ -51,12 +63,12 @@ class MovieController extends Controller
             'language' => 'English',
             'category' => 'Action',
             'storyline' => 'In this meta-comedy, Nicolas Cage is desperate to get a role in a Quentin Tarantino movie. With his career in a slump, he grudgingly accepts a $1 million offer to attend the birthday of a dangerous fan, Javi Gutierrez. Things take a wild turn when a CIA agent recruits him for a mission to take down the fan, who is a notorious arms dealer.',
-            'trailer_embed_url' => 'https://www.youtube.com/embed/B9lY1aT-M6E'
+            'trailer_embed_url' => 'https://www.youtube.com/embed/CKTRbKch2K4?si=aCtwTkTf-DyFcHkn'
         ],
         [
             'id' => 4,
             'title' => 'The Northman',
-            'poster' => 'asset/images/movie-4.png',
+            'poster' => 'asset/images/4.png',
             'year' => '2022',
             'duration' => '2h 17m',
             'rating' => '8.8',
@@ -68,12 +80,12 @@ class MovieController extends Controller
             'cast' => 'Alexander Skarsgård, Nicole Kidman, Claes Bang',
             'language' => 'English',
             'storyline' => 'A young Viking prince, Amleth, vows to avenge his father\'s murder by his uncle. He sets out on a brutal quest that takes him through the icy landscapes of the North Atlantic, culminating in a climactic showdown on an active volcano.',
-            'trailer_embed_url' => 'https://www.youtube.com/embed/oMSdFz-X64E'
+            'trailer_embed_url' => 'https://www.youtube.com/embed/oMSdFM12hOw?si=W1deEBSCGkPu4gdu'
         ],
         [
             'id' => 5,
             'title' => 'Fantastic Beasts: The Secrets of Dumbledore',
-            'poster' => 'asset/images/movie-5.png',
+            'poster' => 'asset/images/5.jpg',
             'year' => '2022',
             'duration' => '2h 22m',
             'rating' => '7.0',
@@ -90,7 +102,7 @@ class MovieController extends Controller
         [
             'id' => 6,
             'title' => 'Sonic The Hedgehog 2',
-            'poster' => 'asset/images/movie-6.png',
+            'poster' => 'asset/images/6.png',
             'year' => '2022',
             'duration' => '2h 2m',
             'rating' => '9.0',
@@ -102,12 +114,12 @@ class MovieController extends Controller
             'cast' => 'James Marsden, Ben Schwartz (voice), Jim Carrey',
             'language' => 'English',
             'storyline' => 'Sonic is ready for more freedom, and Tom and Maddie agree to let him stay home while they go on vacation. But when Dr. Robotnik returns, this time with a new partner, Knuckles, Sonic must team up with his own sidekick, Tails, to find the Master Emerald before it falls into the wrong hands.',
-            'trailer_embed_url' => 'https://www.youtube.com/embed/47Y82Rsx-kE'
+            'trailer_embed_url' => 'https://www.youtube.com/embed/G5kzUpWAusI?si=Jczsjl2u41TrpZHk'
         ],
         [
             'id' => 7,
             'title' => 'Morbius',
-            'poster' => 'asset/images/movie-7.png',
+            'poster' => 'asset/images/7.png',
             'year' => '2022',
             'duration' => '1h 44m',
             'rating' => '6.0',
@@ -119,41 +131,42 @@ class MovieController extends Controller
             'cast' => 'Jared Leto, Matt Smith, Adria Arjona',
             'language' => 'English',
             'storyline' => 'Biochemist Michael Morbius attempts to cure his rare blood disease. What at first appears to be a success soon reveals itself to be a potentially deadly cure, transforming him into a living vampire with superhuman abilities but also a strong desire for blood.',
-            'trailer_embed_url' => 'https://www.youtube.com/embed/oZ6M8w_ZJ9c'
+            'trailer_embed_url' => 'https://www.youtube.com/embed/oZ6iiRrz1SY?si=eyCpoUUgWBLYuf4j'
         ],
         [
             'id' => 8,
             'title' => 'Death on the Nile',
-            'poster' => 'asset/images/movie-8.png',
+            'poster' => 'asset/images/8.png',
             'year' => '2022',
             'duration' => '2h 7m',
             'rating' => '7.8',
             'imdb_rating' => '6.2',
+            'views'=>1056,
             'description' => 'Belgian sleuth Hercule Poirot investigates the murder of a young heiress on a cruise ship on the Nile River.',
             'genre' => 'Crime, Drama, Mystery',
             'director' => 'Kenneth Branagh',
             'cast' => 'Kenneth Branagh, Gal Gadot, Armie Hammer',
             'language' => 'English',
             'storyline' => 'Belgian detective Hercule Poirot\'s Egyptian vacation aboard a glamorous river steamer turns into a terrifying search for a murderer when a picture-perfect couple\'s idyllic honeymoon is tragically cut short. Set against an epic landscape of sweeping desert vistas and majestic Giza pyramids, this tale of unbridled passion and incapacitating jealousy features a cosmopolitan group of impeccably dressed travelers, and enough wicked twists and turns to leave audiences guessing until the final, shocking denouement.',
-            'trailer_embed_url' => 'https://www.youtube.com/embed/dWAXlA-gH28'
+            'trailer_embed_url' => 'https://www.youtube.com/embed/dZRqB0JLizw?si=js8-M-GrgXLCjFp3'
         ],
         [
             'id' => 9,
-            'title' => 'the best chapter 1',
+            'title' => 'Mission: Chapter 1',
             'poster' => 'asset/images/9.jpg',
-            'year' => '2022',
-            'duration' => '1h 47m',
-            'rating' => '9.1',
-            'imdb_rating' => '7.7',
-            'views' => 1500, // Add views property
-            'rating_quality' => 'Excellent',
-            'description' => 'Nicolas Cage plays a fictionalized version of himself who is creatively unfulfilled and facing financial ruin, leading him to accept a $1 million offer to attend the birthday of a dangerous superfan.',
-            'genre' => 'Action, Comedy',
-            'director' => 'Tom Gormican',
-            'cast' => 'Nicolas Cage, Pedro Pascal, Tiffany Haddish',
-            'language' => 'English',
-            'storyline' => 'In this meta-comedy, Nicolas Cage is desperate to get a role in a Quentin Tarantino movie. With his career in a slump, he grudgingly accepts a $1 million offer to attend the birthday of a dangerous fan, Javi Gutierrez. Things take a wild turn when a CIA agent recruits him for a mission to take down the fan, who is a notorious arms dealer.',
-            'trailer_embed_url' => 'https://www.youtube.com/embed/B9lY1aT-M6E'
+            'year' =>'2024',
+            'duration' =>'2h 5m',
+            'rating' =>'8.3',
+            'imdb_rating' =>'6.1',
+            'views'=>1000,
+            'description' =>'A father takes his daughter to UK for treatment. But he ends up in trouble',
+            'genre' =>'action',
+            'director' =>'A.L. Vijay',
+            'cast' =>'Arun VijayAmy ,JacksonNimisha ,Sajayan',
+            'language' =>'Tamil',
+            'category' => 'Action',
+            'storyline' =>'A father takes his daughter to the UK for treatment, but he ends up in trouble with the law and must navigate a dangerous situation to protect his family.',
+            'trailer_embed_url' => 'https://www.youtube.com/embed/U1A9UWPAnNA?si=C_oxluCfCkvsbwbk'
         ],
     ];
 public function index(Request $request)

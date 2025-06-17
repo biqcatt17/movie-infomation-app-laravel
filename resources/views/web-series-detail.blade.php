@@ -128,7 +128,7 @@
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 .card-img-top {
-    height: 400px;
+    height: 600px;
     object-fit: cover;
 }
 .badge {

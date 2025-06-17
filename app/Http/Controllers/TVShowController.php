@@ -62,7 +62,7 @@ class TVShowController extends Controller
             'language' => 'English',
             'description' => 'The story of the reign of Queen Elizabeth II, exploring the political and personal events that shaped her life and the nation.',
             'storyline' => 'A chronicle of the life and reign of Queen Elizabeth II, from her early days as a young princess to her ascension to the throne and the challenges she faces as a monarch.',
-            'trailer_embed_url' => 'https://www.youtube.com/embed/rbi2Q1d3j0g'
+            'trailer_embed_url' => 'https://www.youtube.com/embed/JWtnJjn6ng0?si=JULnsC1ptmBn0t2z'
         ],
         [
             'id' => 4,
@@ -80,7 +80,7 @@ class TVShowController extends Controller
             'language' => 'English',
             'description' => 'Noble families vie for control of the Iron Throne in the mythical land of Westeros, leading to a battle for power and survival.',
             'storyline' => 'In a land where summers can last decades and winters a lifetime, noble families vie for control of the Iron Throne, leading to a complex web of alliances and betrayals.',
-            'trailer_embed_url' => 'https://www.youtube.com/embed/rlR4PGT6tpo'
+            'trailer_embed_url' => 'https://www.youtube.com/embed/KPLWWIOCOOQ?si=xwdJoLGBlTMF9lZ0'
         ],
         [
             'id' => 5,
@@ -98,7 +98,7 @@ class TVShowController extends Controller
             'language' => 'English',
             'description' => 'A lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic, embarks on a journey to protect a mysterious child.',
             'storyline' => 'Set in the Star Wars universe, a lone bounty hunter navigates the outer reaches of the galaxy, taking on dangerous missions while protecting a mysterious child.',
-            'trailer_embed_url' => 'https://www.youtube.com/embed/8fZb2d1a4gE'
+            'trailer_embed_url' => 'https://www.youtube.com/embed/aOC8E8z_ifw?si=WSSSlFNyaFMmT99x'
         ],
          [
     'id' => 6,
@@ -152,7 +152,7 @@ class TVShowController extends Controller
     'language' => 'English',
     'description' => 'Following “Easy Company” of the US Army during WWII in Europe.',
     'storyline' => 'From training camp to D‑Day, the series depicts bravery, losses, and camaraderie through intense battles.',
-    'trailer_embed_url' => 'https://www.youtube.com/embed/HGQZMWFvSlA'
+    'trailer_embed_url' => 'https://www.youtube.com/embed/KKRBAFlN5ww?si=aX2GePxFZiZlE3j5'
   ],
   [
     'id' => 9,
@@ -170,7 +170,7 @@ class TVShowController extends Controller
     'language' => 'English',
     'description' => 'An unflinching look at Baltimore through the eyes of both law enforcers and drug dealers.',
     'storyline' => 'Each season explores different facets: drug trade, bureaucracy, education, politics, and media.',
-    'trailer_embed_url' => 'https://www.youtube.com/embed/uwbry4MRu5o'
+    'trailer_embed_url' => 'https://www.youtube.com/embed/lUeOCo0HeJo?si=HsLbQU685le6AcXg'
   ],
   [
     'id' => 10,
@@ -188,7 +188,7 @@ class TVShowController extends Controller
     'language' => 'English',
     'description' => 'A young Avatar must master all four elements to save the world from the Fire Nation.',
     'storyline' => 'Aang travels with friends to learn bending and face destiny as he fights to bring balance to the world.',
-    'trailer_embed_url' => 'https://www.youtube.com/embed/ztV5_f4V-hk'
+    'trailer_embed_url' => 'https://www.youtube.com/embed/ByAn8DF8Ykk?si=POmLejslNS82bkdz'
   ],
   [
     'id' => 11,
@@ -224,7 +224,7 @@ class TVShowController extends Controller
     'language' => 'English',
     'description' => 'A modern update to the classic British detective stories.',
     'storyline' => 'Sherlock Holmes and Dr. Watson solve modern crimes in contemporary London.',
-    'trailer_embed_url' => 'https://www.youtube.com/embed/SedzDmZe4nA'
+    'trailer_embed_url' => 'https://www.youtube.com/embed/xK7S9mrFWL4?si=KXTVI_TBOEMhUprP'
   ]
     ];
 

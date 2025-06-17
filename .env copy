@@ -1,0 +1,9 @@
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=movie_streaming
+DB_USERNAME=root
+DB_PASSWORD=Jinny12J
+APP_KEY=base64:Fg62EmsgIln47ex2N8Oxlb3kj6W+becxEsTL+yo3yL0=
+APP_DEBUG=true 
+APP_URL=http://localhost:8000
