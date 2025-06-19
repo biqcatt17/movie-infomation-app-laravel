@@ -18,7 +18,7 @@ use App\Http\Controllers\MovieCommentController;
 use App\Http\Controllers\MovieRatingController;
 
 // Home route
-Route::get('/home', [MovieController::class, 'index'])->name('home');
+Route::get('/', [MovieController::class, 'index'])->name('home');
 
 // Authentication Routes
 Auth::routes();
