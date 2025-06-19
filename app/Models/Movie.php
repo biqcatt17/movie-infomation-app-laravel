@@ -13,13 +13,18 @@ class Movie extends Model
     protected $fillable = [
         'title',
         'description',
-        'release_year',
+        'poster',
+        'release_date',
         'duration',
-        'rating',
-        'is_tv_show',
-        'cover_image',
-        'trailer_url',
-        'rating_quality', // Added this field as per migration
+        'imdb_rating',
+        'views',
+        'genre',
+        'director',
+        'cast',
+        'language',
+        'category',
+        'storyline',
+        'trailer_embed_url'
     ];
 
     // Define relationships
@@ -43,8 +48,28 @@ class Movie extends Model
         return $this->hasMany(WatchHistory::class);
     }
 
-    public function comments(): HasMany
+    public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(MovieComment::class, 'movie_id');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(MovieRating::class);
+    }
+
+    public function getAverageRatingAttribute()
+    {
+        $ratings = $this->ratings()->get();
+        if ($ratings->isEmpty()) {
+            return 0;
+        }
+        return round($ratings->avg('rating'), 1);
+    }
+
+    // Add this accessor
+    public function getRateAttribute()
+    {
+        return $this->getAverageRatingAttribute();
     }
 }

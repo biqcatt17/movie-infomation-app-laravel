@@ -1,12 +1,15 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class MovieRating extends Model
 {
+    protected $table = 'ratings';
+
     protected $fillable = [
-        'comment',
+        'rating',
         'user_id',
         'movie_id'
     ];

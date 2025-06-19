@@ -43,17 +43,13 @@
     <div class="row g-4">
         @foreach($allMovies as $movie)
             <div class="col-md-3 mb-4">
-                <a href="{{ route('movies.show', $movie->id) }}" class="text-decoration-none">
-                    <div class="card bg-dark text-white border-0 h-100 hover-effect">
-                        <img src="{{ asset($movie->poster) }}" class="card-img-top" alt="{{ $movie->title }}">
+                <a href="{{ route('movies.show', ['id' => $movie['id']]) }}" class="text-decoration-none">
+                    <div class="card bg-dark text-white hover-effect">
+                        <img src="{{ asset($movie['poster']) }}" class="card-img-top" alt="{{ $movie['title'] }}">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $movie->title }}</h5>
+                            <h5 class="card-title">{{ $movie['title'] }}</h5>
                             <p class="card-text">
-                                <small class="text-muted">{{ $movie->year }} • {{ $movie->duration }}</small>
-                                <span class="float-end">
-                                    <i class="fas fa-star text-warning"></i>
-                                    {{ $movie->rating }}
-                                </span>
+                                <small class="text-muted">{{ $movie['release_date'] }} • {{ $movie['duration'] }}</small>
                             </p>
                         </div>
                     </div>

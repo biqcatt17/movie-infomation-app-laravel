@@ -1,14 +1,14 @@
 <?php
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
-
-class Comment extends Model
+class TVShowRating extends Model
 {
+    protected $table = 'tv_show_ratings';
+
     protected $fillable = [
-        'comment',
+        'rating',
         'user_id',
-        'movie_id'
+        'tv_show_id'
     ];
 
     public function user()
@@ -16,8 +16,8 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function movie()
+    public function tvShow()
     {
-        return $this->belongsTo(Movie::class);
+        return $this->belongsTo(TvShow::class);
     }
 }

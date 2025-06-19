@@ -40,10 +40,14 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $movie->title }}</h5>
                             <p class="card-text">
-                                <small class="text-muted">{{ $movie->year }}</small>
-                                <span class="float-end">
-                                    <i class="fas fa-star text-warning"></i>
-                                    {{ $movie->rating }}
+                                <small class="text-muted">{{ $movie->release_date }}</small>
+                                <span class="float-end text-warning">
+                                    @if(isset($movie->rate))
+                                        {{ number_format($movie->rate, 1) }}
+                                        <i class="fas fa-star"></i>
+                                    @else
+                                        No ratings
+                                    @endif
                                 </span>
                             </p>
                             <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-primary btn-sm w-100">Watch Now</a>

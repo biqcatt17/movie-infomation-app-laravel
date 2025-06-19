@@ -17,106 +17,120 @@
         <div class="col-md-4">
             <div class="card bg-dark border-0">
                 <img src="{{ asset($series->poster) }}" class="card-img-top" alt="{{ $series->title }}">
-                <div class="card-body">
-                    <span class="badge bg-danger mb-2">{{ $series->platform }}</span>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">{{ number_format($series->views) }} views</small>
-                        <div>
-                            <i class="fas fa-star text-warning"></i>
-                            <span class="text-white">{{ $series->rating }}/10</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
         <!-- Web Series Details -->
         <div class="col-md-8">
             <div class="bg-dark text-white p-4 rounded">
-                <h1 class="mb-3">{{ $series->title }}</h1>
-                
-                <div class="d-flex flex-wrap gap-3 mb-4">
-                    <span class="badge bg-secondary">{{ $series->year }}</span>
+                <h1>{{ $series->title }}</h1>
+                <div class="mb-3">
+                    <span class="badge bg-primary">{{ $series->year }}</span>
                     <span class="badge bg-secondary">{{ $series->seasons }} Seasons</span>
-                    <span class="badge bg-secondary">{{ $series->language }}</span>
+                    <span class="badge bg-success">IMDb {{ $series->imdb_rating }}</span>
                 </div>
+                <p class="lead">{{ $series->description }}</p>
 
-                <div class="mb-4">
-                    <h5 class="text-light">Description</h5>
-                    <p>{{ $series->description }}</p>
-                </div>
+                <!-- Trailer Section -->
+                @if(isset($series->trailer_url))
+                    <div class="trailer-section mt-4 mb-4">
+                        <h3>Trailer</h3>
+                        <div class="ratio ratio-16x9">
+                            <iframe 
+                                src="{{ $series->trailer_url }}"
+                                title="{{ $series->title }} trailer"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                class="rounded">
+                            </iframe>
+                        </div>
+                    </div>
+                @endif
 
-                <div class="mb-4">
-                    <h5 class="text-light">Storyline</h5>
+                <!-- Additional Details -->
+                <dl class="row mt-4">
+                    <dt class="col-sm-3">Creator</dt>
+                    <dd class="col-sm-9">{{ $series->creator }}</dd>
+
+                    <dt class="col-sm-3">Platform</dt>
+                    <dd class="col-sm-9">{{ $series->platform }}</dd>
+
+                    <dt class="col-sm-3">Release Date</dt>
+                    <dd class="col-sm-9">{{ \Carbon\Carbon::parse($series->release_date)->format('F j, Y') }}</dd>
+
+                    <dt class="col-sm-3">Views</dt>
+                    <dd class="col-sm-9">{{ number_format($series->views) }}</dd>
+
+                    <dt class="col-sm-3">Cast</dt>
+                    <dd class="col-sm-9">{{ $series->cast }}</dd>
+
+                    <dt class="col-sm-3">Genre</dt>
+                    <dd class="col-sm-9">{{ $series->genre }}</dd>
+
+                    <dt class="col-sm-3">Language</dt>
+                    <dd class="col-sm-9">{{ $series->language }}</dd>
+                </dl>
+
+                <div class="mt-4">
+                    <h4>Storyline</h4>
                     <p>{{ $series->storyline }}</p>
                 </div>
 
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <h5 class="text-light">Genre</h5>
-                        <p>{{ $series->genre }}</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="text-light">Creator</h5>
-                        <p>{{ $series->creator }}</p>
-                    </div>
-                </div>
+                <!-- Rating Section -->
+                <div class="rating-section mt-4">
+                    <h3>Rate this Web Series</h3>
+                    @auth
+                        <form action="{{ route('web-series.rate', $series->id) }}" method="POST" class="mb-4">
+                            @csrf
+                            <div class="rating-stars">
+                                @for($i = 5; $i >= 1; $i--)
+                                    <input type="radio" id="star{{ $i }}" name="rating" value="{{ $i }}">
+                                    <label for="star{{ $i }}">☆</label>
+                                @endfor
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Submit Rating</button>
+                        </form>
+                    @else
+                        <p>Please <a href="{{ route('login') }}">login</a> to rate this web series.</p>
+                    @endauth
 
-                <div class="mb-4">
-                    <h5 class="text-light">Cast</h5>
-                    <p>{{ $series->cast }}</p>
-                </div>
-
-                <div class="mb-4">
-                    <h5 class="text-light">Release Date</h5>
-                    <p>{{ \Carbon\Carbon::parse($series->release_date)->format('F d, Y') }}</p>
-                </div>
-
-                @if($series->trailer_embed_url)
-                <div class="mb-4">
-                    <h5 class="text-light">Trailer</h5>
-                    <div class="ratio ratio-16x9">
-                        <iframe 
-                            src="{{ $series->trailer_embed_url }}" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                    <div class="average-rating">
+                        <h4>Average Rating: {{ number_format($series->average_rating ?? 0, 1) }}/5</h4>
+                        <p>({{ $series->ratings->count() ?? 0 }} ratings)</p>
                     </div>
                 </div>
-                @endif
-            </div>
-        </div>
-    </div>
 
-    <!-- Suggested Web Series -->
-    @if($suggestedSeries->isNotEmpty())
-    <div class="mt-5">
-        <h3 class="text-white mb-4">You May Also Like</h3>
-        <div class="row g-4">
-            @foreach($suggestedSeries as $suggested)
-            <div class="col-md-3">
-                <a href="{{ route('web-series.show', $suggested->id) }}" class="text-decoration-none">
-                    <div class="card bg-dark text-white border-0 hover-effect">
-                        <img src="{{ asset($suggested->poster) }}" class="card-img-top" alt="{{ $suggested->title }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $suggested->title }}</h5>
-                            <span class="badge bg-danger mb-2">{{ $suggested->platform }}</span>
-                            <p class="card-text">
-                                <small class="text-muted">{{ $suggested->year }} • {{ $suggested->seasons }} Seasons</small>
-                                <span class="float-end">
-                                    <i class="fas fa-star text-warning"></i>
-                                    {{ $suggested->rating }}
-                                </span>
-                            </p>
+                <!-- Comments Section -->
+                <div class="comments-section mt-5">
+                    <h3>Comments</h3>
+                    @auth
+                        <form action="{{ route('web-series.comments.store', $series->id) }}" method="POST" class="mb-4">
+                            @csrf
+                            <div class="form-group">
+                                <textarea name="comment" class="form-control" rows="3" placeholder="Leave a comment"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Post Comment</button>
+                        </form>
+                    @else
+                        <p>Please <a href="{{ route('login') }}">login</a> to leave a comment.</p>
+                    @endauth
+
+                    @forelse($series->comments as $comment)
+                        <div class="comment bg-secondary bg-opacity-25 p-3 mb-3 rounded">
+                            <div class="d-flex justify-content-between">
+                                <strong>{{ $comment->user->name }}</strong>
+                                <small>{{ $comment->created_at->diffForHumans() }}</small>
+                            </div>
+                            <p class="mt-2 mb-1">{{ $comment->comment }}</p>
                         </div>
-                    </div>
-                </a>
+                    @empty
+                        <p class="text-muted">No comments yet.</p>
+                    @endforelse
+                </div>
             </div>
-            @endforeach
         </div>
     </div>
-    @endif
 </div>
 
 <style>
@@ -133,6 +147,84 @@
 }
 .badge {
     font-size: 0.9rem;
+}
+
+/* Rating Stars */
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    cursor: pointer;
+    font-size: 30px;
+    color: #ddd;
+    padding: 5px;
+}
+
+.rating input:checked ~ label {
+    color: #ffd700;
+}
+
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #ffd700;
+}
+
+/* Comment styles */
+.comments-list {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.comments-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.comments-list::-webkit-scrollbar-track {
+    background: #343a40;
+}
+
+.comments-list::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 4px;
+}
+
+.rating-stars {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: 3px;
+}
+
+.rating-stars input {
+    display: none;
+}
+
+.rating-stars label {
+    font-size: 30px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.rating-stars input:checked ~ label,
+.rating-stars label:hover,
+.rating-stars label:hover ~ label {
+    color: #ffd700;
+}
+
+.trailer-section {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.trailer-section iframe {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 </style>
 @endsection

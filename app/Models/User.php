@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory; // <--- MAKE SURE THIS LINE IS HERE
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -22,7 +20,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
+        'profile_picture',
+        'birth_date',
+        'bio'
     ];
 
     /**
@@ -42,17 +42,28 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'birth_date' => 'date'
     ];
 
     // Define relationships
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
     public function watchHistories()
     {
         return $this->hasMany(WatchHistory::class);
     }
 
-    public function comments(): HasMany
+    // Add this method to get age
+    public function getAgeAttribute()
     {
-        return $this->hasMany(Comment::class);
+        return $this->birth_date ? \Carbon\Carbon::parse($this->birth_date)->age : null;
     }
 }

@@ -58,6 +58,7 @@ class WebSeriesController extends Controller
             'creator' => 'Álex Pina',
             'cast' => 'Úrsula Corberó, Álvaro Morte, Itziar Ituño',
             'language' => 'Spanish',
+            'imdb_rating'=>'8.4',
             'description' => 'A criminal mastermind who goes by "The Professor" has a plan to pull off the biggest heist in recorded history -- to print billions of euros in the Royal Mint of Spain.',
             'storyline' => 'Eight thieves take hostages and lock themselves in the Royal Mint of Spain as a criminal mastermind manipulates the police to carry out his plan.',
             'trailer_embed_url' => 'https://www.youtube.com/embed/33o3s4Vs4Sw?si=MPGwsaSaL-qgpF6F'
@@ -76,6 +77,7 @@ class WebSeriesController extends Controller
             'creator' => 'The Duffer Brothers',
             'cast' => 'Winona Ryder, David Harbour, Finn Wolfhard',
             'language' => 'English',
+            'imdb_rating'=>'5.6',
             'description' => 'When a',
             'storyline' => 'When a young',
             'trailer_embed_url' => 'https://www.youtube.com/embed/QlYrNC_1Xmk?si=ozGQAC0DVpXhGT89'
@@ -94,6 +96,7 @@ class WebSeriesController extends Controller
         'creator' => 'Peter Morgan',
         'cast' => 'Olivia Colman, Imelda Staunton, Claire Foy',
         'language' => 'English',
+        'imdb_rating'=>'8.6',
         'description' => 'Follows the political rivalries and romance of Queen Elizabeth II\'s reign and the events that shaped the second half of the 20th century.',
         'storyline' => 'A historical drama about the reign of Queen Elizabeth II of the United Kingdom.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/JWtnJjn6ng0'
@@ -112,6 +115,7 @@ class WebSeriesController extends Controller
         'creator' => 'Jon Favreau',
         'cast' => 'Pedro Pascal, Carl Weathers, Gina Carano',
         'language' => 'English',
+        'imdb_rating'=>'5.9',
         'description' => 'The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.',
         'storyline' => 'A bounty hunter protects a mysterious alien child in the Star Wars universe.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/eW7Twd85m2g'
@@ -130,6 +134,7 @@ class WebSeriesController extends Controller
         'creator' => 'Eric Kripke',
         'cast' => 'Karl Urban, Jack Quaid, Antony Starr',
         'language' => 'English',
+        'imdb_rating'=>'8.7',
         'description' => 'A group of vigilantes set out to take down corrupt superheroes who abuse their superpowers.',
         'storyline' => 'Vigilantes fight against superpowered individuals who abuse their abilities.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/M1bhOaLV4FU?si=ijXq18mSeGJa3mtf'
@@ -148,6 +153,7 @@ class WebSeriesController extends Controller
         'creator' => 'Hwang Dong-hyuk',
         'cast' => 'Lee Jung-jae, Park Hae-soo, Wi Ha-joon',
         'language' => 'Korean',
+        'imdb_rating'=>'10',
         'description' => 'Hundreds of cash-strapped contestants accept an invitation to compete in children\'s games for a tempting prize.',
         'storyline' => 'Desperate contestants play deadly children\'s games for a massive cash prize.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/oqxAJKy0ii4'
@@ -184,6 +190,7 @@ class WebSeriesController extends Controller
         'creator' => 'Lauren Schmidt Hissrich',
         'cast' => 'Henry Cavill, Freya Allan, Anya Chalotra',
         'language' => 'English',
+        'imdb_rating'=>'9.8',
         'description' => 'Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world.',
         'storyline' => 'A solitary monster hunter struggles to find his place in a world where people often prove more wicked than beasts.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/ndl1W4ltcmg'
@@ -202,6 +209,7 @@ class WebSeriesController extends Controller
         'creator' => 'Craig Mazin',
         'cast' => 'Jared Harris, Stellan Skarsgård, Emily Watson',
         'language' => 'English',
+        'imdb_rating'=>'6.9',
         'description' => 'In April 1986, the Chernobyl Nuclear Power Plant in Ukraine explodes, creating the worst nuclear disaster in history.',
         'storyline' => 'The true story of one of the worst man-made catastrophes in history.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/s9APLXM9Ei8'
@@ -220,6 +228,7 @@ class WebSeriesController extends Controller
         'creator' => 'Michael Waldron',
         'cast' => 'Tom Hiddleston, Owen Wilson, Sophia Di Martino',
         'language' => 'English',
+        'imdb_rating'=>'8.0',
         'description' => 'The mercurial villain Loki resumes his role as the God of Mischief in a new series that takes place after the events of Avengers: Endgame.',
         'storyline' => 'Loki navigates the multiverse after escaping with the Tesseract.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/nW948Va-l10'
@@ -229,7 +238,6 @@ class WebSeriesController extends Controller
         'title' => 'The Office (US)',
         'poster' => 'asset/images/webseries/the-office-us.jpg',
         'year' => '2005',
-        'rating' => '8.9',
         'seasons' => 9,
         'platform' => 'Prime Video',
         'views' => 300000,
@@ -238,6 +246,7 @@ class WebSeriesController extends Controller
         'creator' => 'Greg Daniels',
         'cast' => 'Steve Carell, Jenna Fischer, John Krasinski',
         'language' => 'English',
+        'imdb_rating'=>'8.0',
         'description' => 'A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium.',
         'storyline' => 'Everyday lives of employees at Dunder Mifflin Paper Company.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/LHOtME2DL4g'
@@ -256,6 +265,7 @@ class WebSeriesController extends Controller
         'creator' => 'Baran bo Odar, Jantje Friese',
         'cast' => 'Louis Hofmann, Karoline Eichhorn, Lisa Vicari',
         'language' => 'German',
+        'imdb_rating'=>'8.0',
         'description' => 'A family saga with a supernatural twist, set in a German town where the disappearance of two young children exposes the relationships among four families.',
         'storyline' => 'Time travel mystery spanning multiple generations in a small German town.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/ESEUoa-mz2c'
@@ -274,6 +284,7 @@ class WebSeriesController extends Controller
         'creator' => 'Steve Blackman',
         'cast' => 'Elliot Page, Tom Hopper, David Castañeda',
         'language' => 'English',
+        'imdb_rating'=>'8.0',
         'description' => 'A family of former child heroes, now grown apart, must reunite to continue to solve the mystery of their father\'s death and the threat of the apocalypse.',
         'storyline' => 'Dysfunctional family of superheroes works to prevent the apocalypse.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/0DAmWHxeoKw'
@@ -292,6 +303,7 @@ class WebSeriesController extends Controller
         'creator' => 'Mark Fergus, Hawk Ostby',
         'cast' => 'Steven Strait, Dominique Tipper, Wes Chatham',
         'language' => 'English',
+        'imdb_rating'=>'8.0',
         'description' => 'In the 24th century, a detective and a rogue ship\'s captain come together for what starts as the case of a missing young woman.',
         'storyline' => 'Humanity has colonized the solar system amidst political tensions.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/kQuTAPWJxNo'
@@ -310,6 +322,7 @@ class WebSeriesController extends Controller
         'creator' => 'Steven Knight',
         'cast' => 'Cillian Murphy, Paul Anderson, Helen McCrory',
         'language' => 'English',
+        'imdb_rating'=>'8.0',
         'description' => 'A gangster family epic set in 1919 Birmingham, England and centered on a gang who sew razor blades in the peaks of their caps.',
         'storyline' => 'Rise of the Shelby crime family in post-WWI Birmingham.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/oVzVdvGIC7U'
@@ -328,6 +341,7 @@ class WebSeriesController extends Controller
         'creator' => 'Bruce Miller',
         'cast' => 'Elisabeth Moss, Yvonne Strahovski, Joseph Fiennes',
         'language' => 'English',
+        'imdb_rating'=>'8.0',
         'description' => 'Set in a dystopian future, a woman is forced to live as a concubine under a fundamentalist theocratic dictatorship.',
         'storyline' => 'Life in the totalitarian society of Gilead where women are subjugated.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/PJTonrzXTJs'
@@ -346,6 +360,7 @@ class WebSeriesController extends Controller
         'creator' => 'Alfred Gough, Miles Millar',
         'cast' => 'Jenna Ortega, Gwendoline Christie, Riki Lindhome',
         'language' => 'English',
+        'imdb_rating'=>'8.0',
         'description' => 'Follows Wednesday Addams as she investigates a murder spree while attending Nevermore Academy.',
         'storyline' => 'Wednesday Addams navigates supernatural mysteries at her new school.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/Di310WS8zLk'
@@ -364,6 +379,7 @@ class WebSeriesController extends Controller
         'creator' => 'Beau Willimon',
         'cast' => 'Kevin Spacey, Robin Wright, Michael Kelly',
         'language' => 'English',
+        'imdb_rating'=>'8.0',
         'description' => 'A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.',
         'storyline' => 'Ruthless politician Frank Underwood climbs the ranks in Washington D.C.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/8QnMmpfKWvo'
@@ -382,6 +398,7 @@ class WebSeriesController extends Controller
         'creator' => 'Amy Sherman-Palladino',
         'cast' => 'Rachel Brosnahan, Alex Borstein, Michael Zegen',
         'language' => 'English',
+        'imdb_rating'=>'8.0',
         'description' => 'A housewife discovers she has a knack for stand-up comedy in the 1950s.',
         'storyline' => 'A 1950s housewife turns her life upside down by pursuing stand-up comedy.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/5iWaLQa_Hvk'
@@ -400,6 +417,7 @@ class WebSeriesController extends Controller
         'creator' => 'Carlo Bernard, Chris Brancato',
         'cast' => 'Wagner Moura, Pedro Pascal, Boyd Holbrook',
         'language' => 'Spanish, English',
+        'imdb_rating'=>'8.0',
         'description' => 'A chronicled look at the criminal exploits of Colombian drug lord Pablo Escobar.',
         'storyline' => 'Rise and fall of notorious drug kingpin Pablo Escobar.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/xl8zdCY-abw'
@@ -418,6 +436,7 @@ class WebSeriesController extends Controller
         'creator' => 'Scott Frank',
         'cast' => 'Anya Taylor-Joy, Bill Camp, Thomas Brodie-Sangster',
         'language' => 'English',
+        'imdb_rating'=>'8.0',
         'description' => 'Orphaned chess prodigy struggles with addiction while mastering the game of chess.',
         'storyline' => 'A young female chess prodigy battles personal demons in the 1950s-60s.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/oZn3qSgmLqI?si=5mFvt4qKSVwmO8f-'
@@ -436,6 +455,7 @@ class WebSeriesController extends Controller
         'creator' => 'Craig Mazin, Neil Druckmann',
         'cast' => 'Pedro Pascal, Bella Ramsey, Gabriel Luna',
         'language' => 'English',
+        'imdb_rating'=>'8.0',
         'description' => 'After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity\'s last hope.',
         'storyline' => 'A smuggler escorts a teenager across post-apocalyptic America.',
         'trailer_embed_url' => 'https://www.youtube.com/embed/uLtkt8BonwM'
@@ -482,29 +502,20 @@ class WebSeriesController extends Controller
     public function show($id)
     {
         $series = collect($this->dummyWebSeries)
-            ->firstWhere('id', (int) $id);
+            ->firstWhere('id', (int)$id);
 
         if (!$series) {
             abort(404);
         }
 
-        // Convert array to object including nested arrays
-        $seriesObject = json_decode(json_encode($series));
+        // Convert to object and initialize properties
+        $series = (object)$series;
+        $series->comments = collect([]);
+        $series->ratings = collect([]);
+        $series->average_rating = 0;
+        $series->trailer_url = $series->trailer_embed_url ?? null; // Map the trailer URL
 
-        // Get suggested series (excluding current one)
-        $suggestedSeries = collect($this->dummyWebSeries)
-            ->filter(function ($item) use ($id) {
-                return $item['id'] != $id;
-            })
-            ->take(4)
-            ->map(function($series) {
-                return json_decode(json_encode($series));
-            });
-
-        return view('web-series-detail', [
-            'series' => $seriesObject,
-            'suggestedSeries' => $suggestedSeries
-        ]);
+        return view('web-series-detail', compact('series'));
     }
 
    public function getDummyWebSeries()

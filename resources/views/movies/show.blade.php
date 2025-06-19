@@ -126,29 +126,52 @@
                     {{-- @endif --}}
                     <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
                         <h5>Comments</h5>
-                        <form action="{{ route('comments.store') }}" method="POST" class="mb-4"> {{-- Changed action to use route helper --}}
-                            @csrf
-                            <input type="hidden" name="movie_id" value="{{ $movie['id'] }}">
-                            <div class="mb-3">
-                                <textarea class="form-control bg-secondary text-white border-0" name="comment" rows="3" placeholder="Add your comment here..." required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit Comment</button>
-                        </form>
+                        @auth
+                        <!-- Rating Section -->
+                        <div class="mb-4 bg-dark p-4 rounded">
+                            <h4 class="text-white">Rate this Movie</h4>
+                            <form action="{{ route('ratings.store', $movie->id) }}" method="POST">
+                                @csrf
+                                <div class="rating mb-3">
+                                    @for ($i = 5; $i >= 1; $i--)
+                                        <input type="radio" name="rating" value="{{ $i }}" id="star{{ $i }}">
+                                        <label for="star{{ $i }}" class="text-warning">★</label>
+                                    @endfor
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit Rating</button>
+                            </form>
+                        </div>
 
-                        <div class="comment-list">
-                            @forelse($movie['comments'] ?? [] as $comment) {{-- Assuming comments would be nested in dummy data --}}
-                                <div class="card bg-secondary text-white mb-3 border-0">
+                        <!-- Comment Section -->
+                        <div class="mb-4 bg-dark p-4 rounded">
+                            <h4 class="text-white">Leave a Comment</h4>
+                            <form action="{{ route('comments.store', $movie->id) }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <textarea class="form-control" name="content" rows="3" placeholder="Write your comment here..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-3">Submit Comment</button>
+                            </form>
+                        </div>
+                        @else
+                            <div class="alert alert-info">
+                                Please <a href="{{ route('login') }}" class="alert-link">login</a> to comment and rate.
+                            </div>
+                        @endauth
+
+                        <!-- Comments Display -->
+                        <div class="comments mt-4">
+                            <h4 class="text-white">Comments</h4>
+                            @foreach($movie->comments()->orderBy('created_at', 'desc')->get() as $comment)
+                                <div class="card bg-dark text-white mb-3">
                                     <div class="card-body">
-                                        <h6 class="card-subtitle mb-2 text-white-50">
-                                            <i class="fas fa-user-circle"></i> {{ $comment['user_name'] ?? 'Guest User' }} {{-- Accessing dummy comment data --}}
-                                            <small class="float-end">{{ $comment['created_at'] ?? 'Just now' }}</small>
+                                        <h6 class="card-subtitle mb-2 text-muted">
+                                            {{ $comment->user->name }} - {{ $comment->created_at->diffForHumans() }}
                                         </h6>
-                                        <p class="card-text">{{ $comment['comment_text'] }}</p>
+                                        <p class="card-text">{{ $comment->content }}</p>
                                     </div>
                                 </div>
-                            @empty
-                                <p class="text-white-50">No comments yet. Be the first to comment!</p>
-                            @endforelse
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use App\Models\Movie; // Import the Movie model
+use Illuminate\Support\Facades\Log;
 
 class MovieController extends Controller
 {
@@ -14,7 +15,7 @@ class MovieController extends Controller
             'id' => 1,
             'title' => 'Doctor Strange in the Multiverse of Madness',
             'poster' => 'asset/images/1.jpeg',
-            'year' => '2022',
+            'release_date' => '2022',
             'duration' => '2h 6m',
             'rating' => '8.5',
             'imdb_rating' => '7.5',
@@ -32,9 +33,8 @@ class MovieController extends Controller
             'id' => 2,
             'title' => 'Memory',
             'poster' => 'asset/images/2.png',
-            'year' => '2022',
+            'release_date' => '2022',
             'duration' => '1h 54m',
-            'rating' => '7.2',
             'imdb_rating' => '6.1',
             'views' => 800, // Add views property
             'description' => 'An expert assassin with a memory disorder...',
@@ -50,7 +50,7 @@ class MovieController extends Controller
             'id' => 3,
             'title' => 'The Unbearable Weight of Massive Talent',
             'poster' => 'asset/images/3.png',
-            'year' => '2022',
+            'release_date' => '2022',
             'duration' => '1h 47m',
             'rating' => '9.1',
             'imdb_rating' => '7.7',
@@ -69,7 +69,7 @@ class MovieController extends Controller
             'id' => 4,
             'title' => 'The Northman',
             'poster' => 'asset/images/4.png',
-            'year' => '2022',
+            'release_date' => '2022',
             'duration' => '2h 17m',
             'rating' => '8.8',
             'imdb_rating' => '7.2',
@@ -86,7 +86,7 @@ class MovieController extends Controller
             'id' => 5,
             'title' => 'Fantastic Beasts: The Secrets of Dumbledore',
             'poster' => 'asset/images/5.jpg',
-            'year' => '2022',
+            'release_date' => '2022',
             'duration' => '2h 22m',
             'rating' => '7.0',
             'imdb_rating' => '6.2',
@@ -103,7 +103,7 @@ class MovieController extends Controller
             'id' => 6,
             'title' => 'Sonic The Hedgehog 2',
             'poster' => 'asset/images/6.png',
-            'year' => '2022',
+            'release_date' => '2022',
             'duration' => '2h 2m',
             'rating' => '9.0',
             'imdb_rating' => '6.5',
@@ -120,7 +120,7 @@ class MovieController extends Controller
             'id' => 7,
             'title' => 'Morbius',
             'poster' => 'asset/images/7.png',
-            'year' => '2022',
+            'release_date' => '2022',
             'duration' => '1h 44m',
             'rating' => '6.0',
             'imdb_rating' => '5.2',
@@ -137,7 +137,7 @@ class MovieController extends Controller
             'id' => 8,
             'title' => 'Death on the Nile',
             'poster' => 'asset/images/8.png',
-            'year' => '2022',
+            'release_date' => '2022',
             'duration' => '2h 7m',
             'rating' => '7.8',
             'imdb_rating' => '6.2',
@@ -154,7 +154,7 @@ class MovieController extends Controller
             'id' => 9,
             'title' => 'Mission: Chapter 1',
             'poster' => 'asset/images/9.jpg',
-            'year' =>'2024',
+            'release_date' =>'2024',
             'duration' =>'2h 5m',
             'rating' =>'8.3',
             'imdb_rating' =>'6.1',
@@ -196,24 +196,20 @@ public function index(Request $request)
     public function show($id)
 {
     $movie = collect($this->dummyMovies)
-        ->firstWhere('id', (int) $id);
+        ->firstWhere('id', (int)$id);
 
     if (!$movie) {
         abort(404);
     }
 
-    // Get suggested movies (excluding current movie)
-    $suggestedMovies = collect($this->dummyMovies)
-        ->filter(function ($item) use ($id) {
-            return $item['id'] != $id;
-        })
-        ->take(4)
-        ->map(fn($movie) => (object) $movie);
+    $movie = (object)$movie;
+    $movie->comments = collect([]);
+    $movie->ratings = collect([]);
+    $movie->average_rating = 0;
+    // Ensure trailer_url is available
+    $movie->trailer_embed_url = $movie->trailer_embed_url ?? null;
 
-    return view('movie-detail', [
-        'movie' => (object) $movie,
-        'suggestedMovies' => $suggestedMovies
-    ]);
+    return view('movie-detail', compact('movie'));
 }
 
     /**
@@ -243,15 +239,13 @@ public function movies(Request $request)
         case 'rating':
             $movies = $movies->sortByDesc('rating');
             break;
-        case 'latest':
-            $movies = $movies->sortByDesc('year');
-            break;
         case 'views':
             $movies = $movies->sortByDesc('views');
             break;
+        default: // latest
+            $movies = $movies->sortByDesc('year');
+            break;
     }
-
-    $movies = $movies->map(fn($movie) => (object) $movie);
 
     $currentPage = LengthAwarePaginator::resolveCurrentPage();
     $perPage = 8;

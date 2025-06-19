@@ -5,19 +5,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('tv_show_ratings', function (Blueprint $table) {
             $table->id();
-            $table->text('comment');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('movie_id')->constrained()->onDelete('cascade');
+            $table->foreignId('tv_show_id')->constrained()->onDelete('cascade');
+            $table->integer('rating')->between(1, 5);
             $table->timestamps();
         });
     }
 
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('tv_show_ratings');
     }
 };

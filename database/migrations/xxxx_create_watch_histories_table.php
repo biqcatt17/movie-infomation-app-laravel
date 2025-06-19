@@ -7,17 +7,17 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('watch_histories', function (Blueprint $table) {
             $table->id();
-            $table->text('comment');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('movie_id')->constrained()->onDelete('cascade');
+            $table->foreignId('movie_id');
+            $table->timestamp('watched_at');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('watch_histories');
     }
 };
