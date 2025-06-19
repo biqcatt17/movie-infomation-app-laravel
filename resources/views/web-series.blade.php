@@ -47,7 +47,7 @@
                                     <small class="text-muted">{{ $show->year }} • {{ $show->seasons }} Seasons</small>
                                     <span class="float-end">
                                         <i class="fas fa-star text-warning"></i>
-                                        {{ $show->rating }}
+                                        {{ $show->views }}
                                     </span>
                                 </p>
                             </div>
